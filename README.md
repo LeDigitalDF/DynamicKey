@@ -86,13 +86,8 @@ In the finished app the user can choose local AI or Muse AI. For the demo, the M
 
 Screen-recorded demo video: https://youtu.be/lKsu7OE8wFo
 
-- Begin screen: ~20 seconds
-- Enroll: ~25 seconds
-- Verify: ~40 seconds
-- Home screen and Daily Summary: ~30 seconds
-- Real site login: ~25 seconds
-- Fallback: ~15 seconds
-- Closing: ~10 seconds
+- This 2:15 demo video shows DynamicKey working for real: logging in with master password and typing rhythm, the Daily Summary on the Home screen, and logging into a real website through the Safari extension, with Safe Mode as fallback. Everything is checked on the Mac itself; the Meta model only explains the verdict.
+
 
 ## Run it
 
