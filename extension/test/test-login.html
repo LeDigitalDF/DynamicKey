@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DynamicKey Test Login</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        max-width: 480px;
+        margin: 48px auto;
+        padding: 0 16px;
+      }
+      label { display: block; margin-bottom: 8px; font-weight: 600; }
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+      p, li { color: #4b5563; line-height: 1.5; }
+      .note {
+        background: #f3f4f6;
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 20px;
+      }
+      code { font-size: 0.95em; }
+    </style>
+  </head>
+  <body>
+    <h1>Test login form</h1>
+    <div class="note">
+      <p><strong>W4 flow (extension v0.5.2+):</strong></p>
+      <ol>
+        <li>Panel shows <strong>Log in</strong>.</li>
+        <li>Verify with master password in the DynamicKey box.</li>
+        <li>Auto-fill uses the <strong>existing</strong> site password from your Mac — no new password is generated on login.</li>
+      </ol>
+      <p>If no site password exists yet, verify succeeds but DynamicKey explains you must sign up first (<code>test-signup.html</code>).</p>
+    </div>
+    <form onsubmit="event.preventDefault()">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" placeholder="e.g. test@example.com" />
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" />
+    </form>
+  </body>
+</html>

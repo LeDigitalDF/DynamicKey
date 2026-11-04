@@ -1,0 +1,12 @@
+# Local Supabase credentials — copy from SupabaseConfig.example.plist
+KeyStrokeAuth/Config/SupabaseConfig.plist
+
+# Xcode user state
+*.xcuserstate
+xcuserdata/
+
+# macOS
+.DS_Store
+
+# Local Xcode build output
+.derivedData/

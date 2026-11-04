@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DynamicKey</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup glass-shell">
+      <header class="header">
+        <div class="brand-row">
+          <img
+            class="brand-logo"
+            src="../icons/icon48.png"
+            width="28"
+            height="28"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="app-name">DynamicKey</span>
+          <span class="extension-version" id="extensionVersion" aria-label="Extension version">v—</span>
+        </div>
+
+        <div class="status-row" id="statusRow">
+          <button
+            type="button"
+            class="shield-toggle active"
+            id="mailShieldToggle"
+            aria-label="Mail Shield"
+            aria-pressed="true"
+            title="Mail Shield is ON — tap to turn off"
+          >
+            <svg class="shield-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Z"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <div class="connection-pill" id="connectionPill" hidden>
+            <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+            <span class="connection-label" id="connectionLabel">Checking…</span>
+            <span class="pill-separator" id="pillSeparator" hidden aria-hidden="true">·</span>
+            <button
+              type="button"
+              class="client-id-inline"
+              id="clientIdToggle"
+              hidden
+              aria-label="Show paired client ID"
+            >
+              <span class="client-id-value" id="clientIdDisplay">••••••••</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <section class="safe-mode-banner" id="safeModeBanner" hidden>
+        <p class="safe-mode-title">Safe Mode active</p>
+        <p class="safe-mode-countdown" id="safeModeCountdown">24:00:00</p>
+        <button type="button" class="glass-btn subtle compact" id="endSafeModeButton">Turn Off Safe Mode</button>
+      </section>
+
+      <section class="paired-panel" id="pairedSection" hidden>
+        <p class="last-verified-row" id="lastVerifiedRow">
+          Last verified: <time class="last-verified-time" id="lastVerifiedAt">—</time>
+        </p>
+        <p class="site-hint" id="siteHint" hidden></p>
+      </section>
+
+      <section class="glass-card" id="pairSection" hidden>
+        <p class="instructions compact">
+          In DynamicKey on your Mac, open <strong>Settings → Browser Extension</strong>
+          and tap <strong>Generate Pairing Code</strong>.
+        </p>
+        <label class="label" for="pairingCodeInput">Pairing code</label>
+        <input
+          id="pairingCodeInput"
+          class="code-input"
+          type="text"
+          maxlength="8"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="AB12CD34"
+        />
+        <p class="error" id="pairError" hidden></p>
+        <p class="pair-hint" id="pairHint" hidden></p>
+        <button type="button" class="glass-btn primary" id="pairButton">Connect to Mac App</button>
+      </section>
+
+      <section class="glass-card muted" id="blockedSection" hidden>
+        <p id="blockedMessage">Mac app is not ready.</p>
+        <button type="button" class="glass-btn subtle" id="blockedRefreshButton">Retry</button>
+      </section>
+
+      <footer class="action-toolbar">
+        <div class="icon-btn-wrap" data-tooltip="Re-pair This Browser">
+          <button
+            type="button"
+            class="icon-btn icon-btn-danger paired-only"
+            id="rePairButton"
+            aria-label="Re-pair this browser"
+            hidden
+          >
+            <span class="icon-btn-glyph" aria-hidden="true">⟲</span>
+          </button>
+        </div>
+        <div class="icon-btn-wrap" data-tooltip="Check Connection">
+          <button
+            type="button"
+            class="icon-btn paired-only"
+            id="refreshButton"
+            aria-label="Check Connection"
+            hidden
+          >
+            <span class="icon-btn-glyph spin-on-hover" aria-hidden="true">↻</span>
+          </button>
+        </div>
+        <div class="icon-btn-wrap" data-tooltip="Safe Mode">
+          <button
+            type="button"
+            class="icon-btn paired-only"
+            id="safeModeButton"
+            aria-label="Safe Mode"
+            hidden
+          >
+            <span class="icon-btn-glyph" aria-hidden="true">🛡</span>
+          </button>
+        </div>
+        <div class="icon-btn-wrap" data-tooltip="Extension Settings">
+          <button
+            type="button"
+            class="icon-btn"
+            id="openOptionsButton"
+            aria-label="Extension settings"
+          >
+            <svg class="icon-btn-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M19.4 13.5a7.4 7.4 0 0 0 .1-3l2-1.1-2-3.5-2.2.6a7.5 7.5 0 0 0-2.6-1.5L14.5 2h-5L9.3 5.5a7.5 7.5 0 0 0-2.6 1.5l-2.2-.6-2 3.5 2 1.1a7.4 7.4 0 0 0 .1 3l-2 1.1 2 3.5 2.2-.6c.8.6 1.7 1.1 2.6 1.5l.2 3.5h5l.2-3.5c.9-.4 1.8-.9 2.6-1.5l2.2.6 2-3.5-2-1.1Z"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DynamicKey Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page glass-shell">
+      <div class="page-backdrop" aria-hidden="true">
+        <img class="page-watermark" src="../icons/icon128.png" alt="" />
+      </div>
+
+      <div class="page-content">
+        <header class="header">
+          <div class="header-copy">
+            <h1 class="page-title">Extension Settings</h1>
+            <p class="page-subtitle" id="statusText">Checking Mac app…</p>
+            <span class="status-dot header-status-dot" id="statusDot" aria-hidden="true"></span>
+          </div>
+        </header>
+
+        <section class="glass-card" id="pairedSection" hidden>
+          <div class="connection-summary">
+            <p class="summary-label">This browser</p>
+            <p class="summary-value" id="browserLabel">—</p>
+            <p class="summary-meta" id="clientId">Client ID —</p>
+            <p class="summary-meta" id="lastChecked">Last checked —</p>
+          </div>
+
+          <div class="settings-actions">
+            <button type="button" class="action-chip" id="refreshButton">
+              <span class="action-icon" aria-hidden="true">↻</span>
+              <span>Check Connection</span>
+            </button>
+            <button type="button" class="action-chip danger" id="rePairButton">
+              <span class="action-icon" aria-hidden="true">⟲</span>
+              <span>Re-pair This Browser</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="glass-card" id="pairSection" hidden>
+          <h2 class="section-title">Connect to Mac app</h2>
+          <p class="instructions compact">
+            In DynamicKey on your Mac, open <strong>Settings → Browser Extension</strong>
+            and tap <strong>Generate Pairing Code</strong>.
+          </p>
+          <label class="label" for="pairingCodeInput">Pairing code</label>
+          <input
+            id="pairingCodeInput"
+            class="code-input"
+            type="text"
+            maxlength="8"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="AB12CD34"
+          />
+          <p class="error" id="pairError" hidden></p>
+          <p class="pair-hint" id="pairHint" hidden></p>
+          <button type="button" class="glass-btn primary" id="pairButton">Connect to Mac App</button>
+        </section>
+
+        <section class="glass-card muted" id="blockedSection" hidden>
+          <h2 class="section-title">Connect to Mac app</h2>
+          <p class="instructions compact" id="blockedMessage">Mac app is not ready.</p>
+          <button type="button" class="glass-btn subtle" id="blockedRefreshButton">Retry</button>
+        </section>
+
+        <button type="button" class="glass-card info-card clickable-card" id="openMacAppButton">
+          <div class="clickable-card-copy">
+            <h2 class="section-title">Managed in DynamicKey App</h2>
+            <p class="body-copy">
+              Allowed websites, site passwords, and typing rhythm are configured in
+              <strong>DynamicKey → Settings</strong> on your Mac.
+            </p>
+          </div>
+          <span class="card-action-hint">Open app</span>
+        </button>
+
+        <section class="glass-card debug-card collapsible-card" data-collapsed="true">
+          <button
+            type="button"
+            class="collapsible-header"
+            id="developerToggle"
+            aria-expanded="false"
+            aria-controls="developerBody"
+          >
+            <span class="section-title">Developer</span>
+            <span class="collapsible-chevron" aria-hidden="true">›</span>
+          </button>
+          <div class="collapsible-body" id="developerBody" hidden>
+            <label class="toggle-row">
+              <input type="checkbox" id="debugModeToggle" />
+              <span>Verbose console logging</span>
+            </label>
+
+            <div class="diagnostic-block">
+              <p class="diagnostic-title">Expert Diagnostic Report</p>
+              <p class="body-copy compact">
+                Export a snapshot of extension state and recent activity to share with support.
+              </p>
+              <button type="button" class="action-chip diagnostic-export" id="exportDiagnosticButton">
+                Export Diagnostic Report
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <p class="version" id="versionLabel">Extension v—</p>
+      </div>
+    </main>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

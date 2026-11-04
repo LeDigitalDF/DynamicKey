@@ -1,0 +1,320 @@
+/* options.css — full-page extension settings with Liquid Glass action chips. */
+
+@import url("../popup/popup.css");
+
+body {
+  width: auto;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 20px 16px 36px;
+  min-height: 100vh;
+}
+
+.page.glass-shell {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 32px);
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.page-backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-watermark {
+  width: min(68%, 220px);
+  height: auto;
+  opacity: 0.14;
+  object-fit: contain;
+  user-select: none;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding-bottom: 28px;
+}
+
+.page .header {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.header-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.page-subtitle {
+  margin: 0;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+  text-align: center;
+}
+
+.header-status-dot {
+  margin-top: 2px;
+}
+
+.version {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+.section-title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.connection-summary {
+  margin-bottom: 14px;
+}
+
+.summary-label {
+  margin: 0 0 2px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.summary-value {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.summary-meta {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  word-break: break-all;
+}
+
+.settings-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.action-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.action-chip:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.action-chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.action-chip.danger {
+  color: #fecaca;
+  background: rgba(255, 107, 107, 0.12);
+  border-color: rgba(255, 107, 107, 0.32);
+}
+
+.action-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.instructions.compact,
+.body-copy.compact {
+  margin-bottom: 12px;
+}
+
+.body-copy {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.clickable-card {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  font: inherit;
+  color: inherit;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.clickable-card:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(79, 124, 255, 0.42);
+  background: rgba(79, 124, 255, 0.1);
+}
+
+.clickable-card:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.clickable-card-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.clickable-card .section-title {
+  margin-bottom: 6px;
+}
+
+.card-action-hint {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #93c5fd;
+}
+
+.collapsible-card {
+  margin-bottom: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.collapsible-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.collapsible-header .section-title {
+  margin: 0;
+}
+
+.collapsible-chevron {
+  font-size: 18px;
+  line-height: 1;
+  color: var(--muted);
+  transition: transform 0.16s ease;
+}
+
+.collapsible-card[data-collapsed="false"] .collapsible-chevron {
+  transform: rotate(90deg);
+}
+
+.collapsible-body {
+  padding: 0 14px 14px;
+}
+
+.collapsible-body[hidden] {
+  display: none;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.toggle-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.debug-card {
+  margin-bottom: 0;
+}
+
+.diagnostic-block {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.diagnostic-title {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.diagnostic-export {
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media (max-width: 420px) {
+  .settings-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .clickable-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
