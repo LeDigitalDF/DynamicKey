@@ -99,7 +99,7 @@ Screen-recorded demo video: https://youtu.be/lKsu7OE8wFo
 
 - Mac app: login UI for enroll and verify, typing rhythm profile, trusted keyboards and networks, saved site credentials, security activity log, LeakPeek, and Daily Summary.
 - Services: MetaExplanationService for verdict-only narration, MorningSummaryService for the first-launch-of-day summary, and MetaAPIKeychainStore for Keychain storage of the Meta API key.
-- Safari extension: password overlay on websites, pairing with the Mac app, and DynamicShield inside Gmail web.
+- Extension: password overlay on websites, pairing with the Mac app, and DynamicShield inside Gmail web.
 
 ## Status
 
